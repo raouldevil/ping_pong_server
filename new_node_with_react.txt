@@ -1,0 +1,80 @@
+New node with React commands:
+
+npm init
+npm install --save-dev webpack html-webpack-plugin webpack-dev-server
+npm install --save-dev babel-core babel-loader babel-preset-react
+npm install --save react react-dom
+
+touch webpack.config.js, add:
+
+###
+
+// In webpack.config.js
+var HtmlWebpackPlugin = require('html-webpack-plugin')
+var HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
+  template: __dirname + '/app/index.html',
+  filename: 'index.html',
+  inject: 'body'
+});
+module.exports = {
+    entry: [
+        './app/index.js'
+    ],
+    module: {
+        loaders: [
+            {test: /\.js$/, exclude: /node_modules/, loader: "babel-loader"}
+        ]
+    },
+    output: {
+        filename: "index_bundle.js",
+        path: __dirname + '/dist'
+    },
+    plugins: [HTMLWebpackPluginConfig]
+}
+
+###
+
+mkdir app
+touch app/index.js, add nothing for now
+touch app/index.html, add:
+
+###
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My App</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="app"></div>
+</body>
+</html>
+
+###
+
+touch .babelrc, add:
+
+###
+
+{
+  "presets": [
+    "react"
+  ]
+}
+
+###
+
+vim package.json, replace the scripts with the snippet below:
+
+###
+
+"scripts": {
+  "webpack": "./node_modules/.bin/webpack -p",
+  "start": "./node_modules/.bin/webpack-dev-server"
+},
+
+###
+
+
