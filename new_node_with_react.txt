@@ -1,13 +1,14 @@
 New node with React commands:
 
+```sh
 npm init
 npm install --save-dev webpack html-webpack-plugin webpack-dev-server
 npm install --save-dev babel-core babel-loader babel-preset-react
 npm install --save react react-dom
 
 touch webpack.config.js, add:
-
-###
+```
+```js
 
 // In webpack.config.js
 var HtmlWebpackPlugin = require('html-webpack-plugin')
@@ -21,9 +22,9 @@ module.exports = {
         './app/index.js'
     ],
     module: {
-        loaders: [
-            {test: /\.js$/, exclude: /node_modules/, loader: "babel-loader"}
-        ]
+      loaders: [
+          {test: /\.js$/, exclude: /node_modules/, loader: "babel-loader"}
+      ]
     },
     output: {
         filename: "index_bundle.js",
@@ -32,13 +33,15 @@ module.exports = {
     plugins: [HTMLWebpackPluginConfig]
 }
 
-###
+```
+```shell
 
 mkdir app
 touch app/index.js, add nothing for now
 touch app/index.html, add:
 
-###
+```
+```html
 
 <!DOCTYPE html>
 <html lang="en">
@@ -52,11 +55,13 @@ touch app/index.html, add:
 </body>
 </html>
 
-###
+```
+```sh
 
 touch .babelrc, add:
 
-###
+```
+```js
 
 {
   "presets": [
@@ -64,17 +69,17 @@ touch .babelrc, add:
   ]
 }
 
-###
+```
 
 vim package.json, replace the scripts with the snippet below:
 
-###
+```js
 
 "scripts": {
   "webpack": "./node_modules/.bin/webpack -p",
   "start": "./node_modules/.bin/webpack-dev-server"
 },
 
-###
+```
 
 
