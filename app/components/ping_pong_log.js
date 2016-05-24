@@ -7,23 +7,19 @@ var logItems = [
   {"key": 4, "time": new Date('2016-05-20'), "server": "www.mts-api.mytimeslot.co.za", "result": "Fail"}
 ]
 
-
 var PingPongLog = React.createClass({
   render: function(){
     return (
-      <div class="ping-pong-log">
-        <PingPongTitle />
-        <div class="ping-pong-list">
-          <table>
-            <tbody>
-              {
-                this.props.pingPongLogs.map(function(log){
-                  return <PingPongItem key={log["key"]} log={log} />
-                })
-              }
-            </tbody>
-          </table>
-        </div>
+      <div className="ping-pong-list">
+        <table>
+          <tbody>
+            {
+              logItems.map(function(log){
+                return <PingPongItem key={log["key"]} log={log} />
+              })
+            }
+          </tbody>
+        </table>
       </div>
     )
   }
@@ -41,3 +37,5 @@ var PingPongItem = React.createClass({
     )
   }
 });
+
+module.exports = PingPongLog
