@@ -9,7 +9,6 @@ var HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
 module.exports = {
     entry: [
         './app/index.js',
-        './app/index.css'
     ],
     module: {
         loaders: [
