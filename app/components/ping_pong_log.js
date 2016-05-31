@@ -1,4 +1,5 @@
 var React = require('react');
+var PropTypes = React.PropTypes
 
 var logItems = [
   {"key": 1, "time": new Date('2016-05-19'), "server": "www.mts-api.mytimeslot.co.za", "result": "Success"},
@@ -15,7 +16,7 @@ var PingPongLog = React.createClass({
           <tbody>
             {
               logItems.map(function(log){
-                return <PingPongItem key={log["key"]} log={log} />
+                return <PingPongItem key={log["key"]} time={log["time"].toString()} server={log["server"]} result={log["result"]} />
               })
             }
           </tbody>
@@ -23,19 +24,22 @@ var PingPongLog = React.createClass({
       </div>
     )
   }
-});
+})
 
-var PingPongItem = React.createClass({
-  render: function(){
-    console.log("Log:", this.props.log)
-    return (
-      <tr class="ping-pong-log-item">
-        <td> {this.props.log["time"].toString()} </td>
-        <td> {this.props.log["server"]} </td>
-        <td> {this.props.log["result"]} </td>
-      </tr>
-    )
-  }
-});
+var PingPongItem = function(props) {
+  return (
+    <tr class="ping-pong-log-item">
+      <td> {props.time} </td>
+      <td> {props.server} </td>
+      <td> {props.result} </td>
+    </tr>
+  )
+}
+
+PingPongItem.propTypes = {
+  time: PropTypes.string.isRequired,
+  server: PropTypes.string.isRequired,
+  result: PropTypes.string.isRequired
+},
 
 module.exports = PingPongLog
