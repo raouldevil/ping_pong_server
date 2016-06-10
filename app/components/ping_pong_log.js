@@ -1,30 +1,24 @@
 var React = require('react');
 var PropTypes = React.PropTypes
+var ReactRouter = require('react-router');
+var Link = ReactRouter.Link
 
-var logItems = [
-  {"key": 1, "time": new Date('2016-05-19'), "server": "www.mts-api.mytimeslot.co.za", "result": "Success"},
-  {"key": 2, "time": new Date('2016-05-19'), "server": "www.mts-api.mytimeslot.co.za", "result": "Success"},
-  {"key": 3, "time": new Date('2016-05-20'), "server": "www.mts-api.mytimeslot.co.za", "result": "Fail"},
-  {"key": 4, "time": new Date('2016-05-20'), "server": "www.mts-api.mytimeslot.co.za", "result": "Fail"}
-]
 
-var PingPongLog = React.createClass({
-  render: function(){
-    return (
-      <div className="ping-pong-list">
-        <table>
-          <tbody>
-            {
-              logItems.map(function(log){
-                return <PingPongItem key={log["key"]} time={log["time"].toString()} server={log["server"]} result={log["result"]} />
-              })
-            }
-          </tbody>
-        </table>
-      </div>
-    )
-  }
-})
+var PingPongLog = function(props) {
+  return (
+    <div className="ping-pong-list">
+      <table>
+        <tbody>
+          {
+            props.logItems.map(function(log){
+              return <PingPongItem key={log["key"]} logId={log["logId"]} time={log["time"].toString()} server={log["server"]} result={log["result"]} />
+            })
+          }
+        </tbody>
+      </table>
+    </div>
+  )
+}
 
 var PingPongItem = function(props) {
   return (
@@ -32,6 +26,11 @@ var PingPongItem = function(props) {
       <td> {props.time} </td>
       <td> {props.server} </td>
       <td> {props.result} </td>
+      <td>
+        <Link to={'/log_item/' + props.logId} >
+          Test Server
+        </Link>
+      </td>
     </tr>
   )
 }
@@ -39,7 +38,8 @@ var PingPongItem = function(props) {
 PingPongItem.propTypes = {
   time: PropTypes.string.isRequired,
   server: PropTypes.string.isRequired,
-  result: PropTypes.string.isRequired
+  result: PropTypes.string.isRequired,
+  logId: PropTypes.string.isRequired
 },
 
 module.exports = PingPongLog

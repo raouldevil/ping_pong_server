@@ -6,12 +6,14 @@ var Route = ReactRouter.Route
 var IndexRoute = ReactRouter.IndexRoute
 var hashHistory = ReactRouter.hashHistory;
 var Main = require('../components/main');
-var PingPongLog = require('../components/ping_pong_log');
+var PingPongLogContainer = require('../containers/ping_pong_log_container');
+var TestLogItem = require('../components/test_log_item');
 
 var routes = (
     <Router history={hashHistory}>
       <Route path='/' component={Main} >
-        <IndexRoute component={PingPongLog} />
+        <IndexRoute component={PingPongLogContainer} />
+        <Route path='/log_item/:logId' component={TestLogItem} />
       </Route>
 
     </Router>

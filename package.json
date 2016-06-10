@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "webpack": "./node_modules/.bin/webpack -p",
-    "start": "./node_modules/.bin/webpack-dev-server"
+    "webpack-dev": "./node_modules/.bin/webpack-dev-server"
   },
   "author": "",
   "license": "ISC",

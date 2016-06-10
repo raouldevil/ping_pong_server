@@ -7,8 +7,10 @@ npm install --save-dev babel-core babel-loader babel-preset-react
 npm install --save react react-dom
 npm install --save react-router
 
-touch webpack.config.js, add:
 ```
+
+touch webpack.config.js, add:
+
 ```js
 
 // In webpack.config.js
@@ -57,11 +59,15 @@ touch app/index.html, add:
 </html>
 
 ```
+
+Create babelrc and add support for react:
+
 ```sh
 
-touch .babelrc, add:
+touch .babelrc
 
 ```
+
 ```js
 
 {
@@ -71,8 +77,13 @@ touch .babelrc, add:
 }
 
 ```
+Replace the scripts in `package.json` with the snippet below:
 
-vim package.json, replace the scripts with the snippet below:
+```sh
+
+vim package.json
+
+```
 
 ```js
 
