@@ -27,7 +27,7 @@ var PingPongItem = function(props) {
       <td> {props.server} </td>
       <td> {props.result} </td>
       <td>
-        <Link to={'/log_item/' + props.logId} >
+        <Link to={'/log_item/' + props.logId} params={{time: props.time, server: props.server, result: props.result}} >
           Test Server
         </Link>
       </td>

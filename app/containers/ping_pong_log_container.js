@@ -1,6 +1,7 @@
 var React = require('react');
 var PingPongLog= require('../components/ping_pong_log');
-var LogItems = require('../data/log_items');
+var Urls = require('../data/urls');
+var pingPongMachine = require('../models/pingPongMachine')
 
 var PingPongLogContainer = React.createClass({
   getInitialState: function() {
@@ -10,10 +11,14 @@ var PingPongLogContainer = React.createClass({
     };
   },
   componentDidMount: function() {
-    this.setState({
-      loading: false,
-      logItems: LogItems
-    })
+    console.log("Urls", Urls)
+    pingPongMachine.pingServers(Urls).then(function(items){
+      this.setState({
+        loading: false,
+        logItems: items
+      })
+    }.bind(this))
+
   },
   render: function(){
     return this.state.loading == true ? <p>"Loading..."</p> : <PingPongLog logItems={this.state.logItems} />

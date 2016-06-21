@@ -6,6 +6,7 @@ npm install --save-dev webpack html-webpack-plugin webpack-dev-server
 npm install --save-dev babel-core babel-loader babel-preset-react
 npm install --save react react-dom
 npm install --save react-router
+npm install --save axios
 
 ```
 
