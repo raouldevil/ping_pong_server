@@ -2,8 +2,6 @@ var axios = require('axios')
 
 var pingServer = function(url) {
   return axios.get(url)
-  // return axios.get('https://api.github.com/users/raouldevil')
-
 }
 
 var pingPongMachine = {
