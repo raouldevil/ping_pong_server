@@ -1,6 +1,6 @@
-var React = require('react');
+var React = require('react')
 var PropTypes = React.PropTypes
-var ReactRouter = require('react-router');
+var ReactRouter = require('react-router')
 var Link = ReactRouter.Link
 
 
@@ -40,6 +40,6 @@ PingPongItem.propTypes = {
   server: PropTypes.string.isRequired,
   result: PropTypes.string.isRequired,
   logId: PropTypes.string.isRequired
-},
+}
 
 module.exports = PingPongLog

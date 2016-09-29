@@ -1,4 +1,5 @@
-var React = require('react');
+var React = require('react')
+require('../index.css')
 
 var Main = React.createClass({
     render: function() {

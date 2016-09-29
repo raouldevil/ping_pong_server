@@ -1,4 +1,4 @@
-var React = require('react');
+var React = require('react')
 
 var TestLogItem = React.createClass({
   contextTypes: {
